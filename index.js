@@ -10,13 +10,15 @@ function handleSubmit(ev) {
 
     const details = document.querySelector('#details')
     const name = f.personName.value
-    details.innerHTML += '<strong>'+ name + '</strong>'
+    details.innerHTML += `<strong>${name}</strong>` //called string interpolation //'<strong>'+ name + '</strong>'
 
     heading.textContent = f.personName.value + ', ' +  x.personPlace.value 
    
 }
 
 personForm.addEventListener('submit', handleSubmit)
+
+
 
 
 
