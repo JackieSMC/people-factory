@@ -10,7 +10,13 @@ function handleSubmit(ev) {
 
     const details = document.querySelector('#details')
     const name = f.personName.value
-    details.innerHTML += `<strong>${name}</strong>` //called string interpolation //'<strong>'+ name + '</strong>'
+
+    const boldedName = document.createElement('strong')
+    boldedName.textContent = name
+    details.appendChild(boldedName)
+
+//can't take boldedName and place directly below to grab the element
+   // details.innerHTML += `<strong>${name}</strong>` //called string interpolation //'<strong>'+ name + '</strong>'
 
     heading.textContent = f.personName.value + ', ' +  x.personPlace.value 
    
