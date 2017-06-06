@@ -2,6 +2,18 @@
 const personForm = document.querySelector('#personForm')
 //const personPlace = document.querySelector('#personPlace')
 
+function renderColor(color) {
+    const div = document.createElement('div')
+    div.style.backgroundColor = color
+    div.style.width = '100px'
+    div.style.height = '50px'
+    
+    //return `<div style="background-color: ${favoriteColor}; width: 100px; height: 50px; "></div>`
+    return div
+
+}
+
+
 function handleSubmit(ev) {
     ev.preventDefault()
     const f = ev.target
@@ -19,7 +31,7 @@ function handleSubmit(ev) {
     const favoriteColor = f.favoriteColor.value
     const age = f.age.value
 
-    const colorDiv = `<div style="background-color: ${favoriteColor}; width: 100px; height: 50px; "></div>`
+    //const colorDiv = `<div style="background-color: ${favoriteColor}; width: 100px; height: 50px; "></div>`
 
     const thing = document.createElement(``)
     thing.textContent = 
@@ -30,7 +42,8 @@ function handleSubmit(ev) {
     nameItem.textContent = `Name: ${name}`
    
     const colorItem = document.createElement('li')
-    colorItem.innerHTML = `Favorite Color: ${colorDiv}`
+    //colorItem.innerHTML = `Favorite Color: ${colorDiv}`
+    colorItem.innerHTML = `Favorite Color: ${rendercolor(favoriteColor).outerHTML}`
    
     const ageItem = document.createElement('li')
     ageItem.textContent = `Age: ${age}`
@@ -53,8 +66,7 @@ function handleSubmit(ev) {
 
 //can't take boldedName and place directly below to grab the element
 // details.innerHTML += `<strong>${name}</strong>` //called string interpolation //'<strong>'+ name + '</strong>'
-
-    heading.textContent = f.personName.value + ', ' +  x.personPlace.value 
+ //heading.textContent = f.personName.value + ', ' +  x.personPlace.value 
    
 }
 
