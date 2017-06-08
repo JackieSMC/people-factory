@@ -1,7 +1,11 @@
-(function () {
-    const personForm = document.querySelector('#personForm')
+const peopleFactory = {
 
-    function renderColor(color) {
+    init: function(formSelector) {
+        const personForm = document.querySelector(formSelector)
+        personForm.addEventListener('submit', this.handleSubmit.bind(this))
+    },
+
+    renderColor: function(color) {
         const div = document.createElement('div')
         div.style.backgroundColor = color
         div.style.width = '100px'
@@ -9,35 +13,34 @@
 
         return div
 
-    }
+    },
 
-    function renderListItem(label, value) {
-        //const item = document.createElement('li')
-        //item.innerHTML = `${label}: ${value}`
-    const item = document.createElement('li')
-    const dt = document.createElement('dt')
-    const dd = document.createElement('dd')
-    dt.textContent = label
-    dd.innerHTML = value
-    item.appendChild(dt)
-    item.appendChild(dd)
+    renderListItem: function(label, value) {
+        const item = document.createElement('li')
+        const dt = document.createElement('dt')
+        const dd = document.createElement('dd')
+        dt.textContent = label
+        dd.innerHTML = value
+        item.appendChild(dt)
+        item.appendChild(dd)
 
     return item
-    }
-    function renderList(personData) {
+},
+
+    renderList: function(personData) {
         const list = document.createElement('dl')
         // call renderlistitem several items //['name', 'favoriteColor', 'age']
-        Object.keys(personData).map(function(label) {
-            const item = renderListItem(label, personData[label])
+        Object.keys(personData).map((label) => {
+            const item = this.renderListItem(label, personData[label])
             list.appendChild(item)
         
         })
 
         return list
-    }
+    },
     
 
-    function handleSubmit(ev) {
+    handleSubmit: function(ev) {
         ev.preventDefault()
         const f = ev.target
         const details = document.querySelector('#details')
@@ -45,18 +48,20 @@
         
         const person = {
             name: f.personName.value,    
-            favoriteColor:  renderColor(f.favoriteColor.value).outerHTML, //'black'
+            favoriteColor:  this.renderColor(f.favoriteColor.value).outerHTML, //'black'
             age: f.age.value, //'confidential'
         }
     
-    const list = renderList(person)
+    const list = this.renderList(person)
     details.appendChild(list)
 
    
+},
+
 }
 
-personForm.addEventListener('submit', handleSubmit)
-})()
+peopleFactory.init('#personForm')
+
 
 
 
@@ -123,3 +128,15 @@ personForm.addEventListener('submit', handleSubmit)
 //const name = f.personName.value
 //const favoriteColor = f.favoriteColor.value
 //const age = f.age.value 
+
+//const item = document.createElement('li')
+//item.innerHTML = `${label}: ${value}`
+
+//can write funcitons like below
+
+// function sayYeah ( ) {
+
+//}
+//const sayShucks () => {
+
+//}//anonoymous function
