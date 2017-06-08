@@ -1,4 +1,4 @@
-{
+(function () {
     const personForm = document.querySelector('#personForm')
 
     function renderColor(color) {
@@ -22,7 +22,7 @@
     item.appendChild(dt)
     item.appendChild(dd)
 
-        return item
+    return item
     }
     function renderList(personData) {
         const list = document.createElement('dl')
@@ -41,9 +41,7 @@
         ev.preventDefault()
         const f = ev.target
         const details = document.querySelector('#details')
-        //const name = f.personName.value
-        //const favoriteColor = f.favoriteColor.value
-        //const age = f.age.value
+
         
         const person = {
             name: f.personName.value,    
@@ -54,23 +52,11 @@
     const list = renderList(person)
     details.appendChild(list)
 
-    //list.appendChild(nameItem)
-    //list.appendChild(colorItem)
-    //list.appendChild(ageItem)
-    //details.appendChild(list)
-
-   // details.innerHTML = `
-    //<ul>
-       // <li> Name: ${name} </li>
-       // <li> Favorite Color: ${colorDiv}</li>
-       // <li> Age: ${age} </li>
-
-    //</ul>
-    //`   
+   
 }
 
 personForm.addEventListener('submit', handleSubmit)
-}
+})()
 
 
 
@@ -120,3 +106,20 @@ personForm.addEventListener('submit', handleSubmit)
 //circumstances
 // IIFE- immediate invoked function expression - sets local variables within the function
 // i.e no global functions 
+
+//list.appendChild(nameItem)
+//list.appendChild(colorItem)
+//list.appendChild(ageItem)
+//details.appendChild(list)
+
+// details.innerHTML = `
+//<ul>
+    // <li> Name: ${name} </li>
+    // <li> Favorite Color: ${colorDiv}</li>
+    // <li> Age: ${age} </li>
+
+//</ul>
+//`  
+//const name = f.personName.value
+//const favoriteColor = f.favoriteColor.value
+//const age = f.age.value 
