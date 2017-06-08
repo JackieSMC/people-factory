@@ -12,13 +12,20 @@ function renderColor(color) {
 }
 
 function renderListItem(label, value) {
-    const item = document.createElement('li')
-    item.innerHTML = `${label}: ${value}`
+    //const item = document.createElement('li')
+    //item.innerHTML = `${label}: ${value}`
+  const item = document.createElement('li')
+  const dt = document.createElement('dt')
+  const dd = document.createElement('dd')
+  dt.textContent = label
+  dd.innerHTML = value
+  item.appendChild(dt)
+  item.appendChild(dd)
 
     return item
 }
 function renderList(personData) {
-    const list = document.createElement('ul')
+    const list = document.createElement('dl')
     // call renderlistitem several items //['name', 'favoriteColor', 'age']
     Object.keys(personData).map(function(label) {
         const item = renderListItem(label, personData[label])
@@ -100,3 +107,8 @@ personForm.addEventListener('submit', handleSubmit)
  //can't take boldedName and place directly below to grab the element
 // details.innerHTML += `<strong>${name}</strong>` //called string interpolation //'<strong>'+ name + '</strong>'
 //heading.textContent = f.personName.value + ', ' +  x.personPlace.value 
+
+//notes- avoid global variables because of bringing in libraries- unpredictable 
+//circumstances
+// IIFE- immediate invoked function expression - sets local variables within the function
+// i.e no global functions 
